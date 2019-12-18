@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -55,9 +56,19 @@ void ManageYourMemoryWithMallockAndFree(matrix M)
 	delete[] M.A;
 }
 
-double solution(matrix a, matrix b, matrix c)
+void solution(matrix b)
 {
-	
+	int* x = new int (b.m + 2);
+	int j = 0;
+	for (int i = 0; i < b.n; i++)
+	{
+		for (j = 0; j < b.m; j++)
+		{
+			cout << setw(2) << b.A[i][j] << "*x" << j << " : ";
+		}
+		cout <<"-1*x" <<j+1 << " : 1*x" << j+2 << endl;
+	}
+
 }
 
 int main()
@@ -71,13 +82,13 @@ int main()
 	matrix a("a");
 	// variables
 
-
+	solution(a);
 
 	if (test)
 	{
-	y.print();
-	z.print();
-	a.print();
+		y.print();
+		z.print();
+		a.print();
 	}
 
 	ManageYourMemoryWithMallockAndFree(y);
